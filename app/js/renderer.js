@@ -10,8 +10,16 @@ linkSobre.addEventListener('click' , function(){
 });
 
 let imgs = ['img/play-button.svg', 'img/stop-button.svg'];
+let play = false;
 botaoPlay.addEventListener('click', function() {
+    if(play){
+        timer.parar();
+        play = false;
+    }else{
+        timer.iniciar(tempo);
+        play = true;
+    }
     imgs = imgs.reverse();
     botaoPlay.src = imgs[0];
-    timer.iniciar(tempo);
+
 });
