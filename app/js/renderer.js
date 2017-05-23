@@ -32,3 +32,11 @@ botaoPlay.addEventListener('click', function() {
     botaoPlay.src = imgs[0];
 
 });
+
+ipcRenderer.on('curso-trocado', (event, cursoSelecionado) => {
+    data.pegaDados(cursoSelecionado)
+        .then((dados) => {
+            tempo.textContent = dados.tempo;
+        });
+    curso.textContent = cursoSelecionado;
+})
