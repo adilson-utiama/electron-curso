@@ -19,6 +19,10 @@ app.on('ready', () => {
     tray.setToolTip('Escolha um Curso');
     tray.setContextMenu(trayMenu);
 
+    let templateMenuPrincipal = templateGenerator.geraMenuPrincipalTemplate(app);
+    let menuPrincipal = Menu.buildFromTemplate(templateMenuPrincipal);
+    Menu.setApplicationMenu(menuPrincipal);
+
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
 
