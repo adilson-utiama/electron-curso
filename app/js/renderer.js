@@ -44,14 +44,23 @@ botaoPlay.addEventListener('click', function() {
 });
 
 ipcRenderer.on('curso-trocado', (event, cursoSelecionado) => {
+    timer.parar(curso.textContent);
     data.pegaDados(cursoSelecionado)
         .then((dados) => {
             tempo.textContent = dados.tempo;
+        }).catch((err) => {
+            console.log('O curso ainda não possui um JSON');
+            tempo.textContent = '00:00:00';
         });
     curso.textContent = cursoSelecionado;
 })
 
 botaoAdicionar.addEventListener('click', function(){
+    if(campoAdicionar.value == ''){
+        console.log('O curso não pode ser vazio.');
+        return;
+    }
+
     let novoCurso = campoAdicionar.value;
     curso.textContent = novoCurso;
     tempo.textContent = '00:00:00';

@@ -4,10 +4,16 @@ const { ipcMain } = require('electron');
 module.exports = {
     templateInicial: null,
 
-    geraTrayTemplate(mainWindow){
+    geraTrayTemplate(mainWindow, app){
 
         let template = [
           {label: 'Cursos'},
+          {
+              label: 'Sair',
+              click: () => {
+                  app.quit();
+              }
+          },
           {type: 'separator'}
         ];
 

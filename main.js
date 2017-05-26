@@ -14,7 +14,7 @@ app.on('ready', () => {
     });
 
     tray = new Tray(__dirname + '/app/img/icon-tray.png');
-    let template = templateGenerator.geraTrayTemplate(mainWindow);
+    let template = templateGenerator.geraTrayTemplate(mainWindow, app);
     let trayMenu = Menu.buildFromTemplate(template);
     tray.setToolTip('Escolha um Curso');
     tray.setContextMenu(trayMenu);
